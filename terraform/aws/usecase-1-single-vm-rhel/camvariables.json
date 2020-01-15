@@ -214,6 +214,16 @@
       "type": "string"
     },
     {
+      "name": "private_ip_address",
+      "label": "Private IP Address",
+      "description": "Private IP Address",
+      "group_name": "",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string"
+    },
+    {
       "name": "instance_id",
       "label": "Instance ID",
       "description": "Instance Id",
