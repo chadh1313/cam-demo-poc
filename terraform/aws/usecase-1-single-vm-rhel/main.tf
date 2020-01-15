@@ -24,16 +24,16 @@ data "aws_security_group" "group_name" {
   vpc_id = "${var.vpc_id}"
 }
 
-resource "aws_instance" "citi-rhel-vm" {
-  ami = "${var.citi-rhel-vm_ami}"
+resource "aws_instance" "demo-rhel-vm" {
+  ami = "${var.demo-rhel-vm_ami}"
   key_name = "${var.aws_key_pair_name}"  # Generated
-  instance_type = "${var.citi-rhel-vm_aws_instance_type}"
+  instance_type = "${var.demo-rhel-vm_aws_instance_type}"
   subnet_id  = "${data.aws_subnet.subnet.id}"
   vpc_security_group_ids = ["${data.aws_security_group.group_name.id}"]
   tags = "${merge(
     module.camtags.tagsmap,
     map(
-      "Name", "${var.citi-rhel-vm_name}"
+      "Name", "${var.demo-rhel-vm_name}"
     )
   )}"
 }
@@ -54,11 +54,11 @@ resource "aws_ebs_volume" "extra-volumes" {
 }
 
 # TODO make the device names a variable or local
-resource "aws_volume_attachment" "citi-rhel-vm_volume_name_volume_attachment" {
+resource "aws_volume_attachment" "demo-rhel-vm_volume_name_volume_attachment" {
   count             = "${var.volume_count}"
   device_name = "${element(split(",", "/dev/sdb,/dev/sdc,/dev/sdd,/dev/sde"), count.index)}"
   volume_id =   "${element(aws_ebs_volume.extra-volumes.*.id, count.index)}"
-  instance_id = "${aws_instance.citi-rhel-vm.id}"
+  instance_id = "${aws_instance.demo-rhel-vm.id}"
 }
 
 module "camtags" {

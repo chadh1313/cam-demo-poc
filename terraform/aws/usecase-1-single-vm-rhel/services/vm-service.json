@@ -2,10 +2,10 @@
   "service": {
     "specVersion": "v3",
     "catalog_metadata": {
-      "name": "citi-use-case-1-single-VM-AWS",
+      "name": "demo-use-case-1-single-VM-AWS",
       "description": "Single RHEL VM on AWS with optional disks",
       "image": "serviceicon_6.svg",
-      "category": "Citi",
+      "category": "demo",
       "bullets": [
         {
           "title": "Cloud Provider",
@@ -113,7 +113,7 @@
                   {
                     "case": "large_new",
                     "sequence": {
-                      "0": "citicread5c9f509",
+                      "0": "democread5c9f509",
                       "1": "usecase18f8211ec"
                     }
                   }
@@ -138,9 +138,9 @@
                 "cloud_connection_name": "cmh-aws-2",
                 "template_data_objects": {},
                 "template_params": {
-                  "citi-rhel-vm_ami": "ami-011b3ccf1bd6db744",
-                  "citi-rhel-vm_aws_instance_type": "t2.micro",
-                  "citi-rhel-vm_name": "citi-rhel-vm-${svc_instance.name}",
+                  "demo-rhel-vm_ami": "ami-011b3ccf1bd6db744",
+                  "demo-rhel-vm_aws_instance_type": "t2.micro",
+                  "demo-rhel-vm_name": "demo-rhel-vm-${svc_instance.name}",
                   "aws_key_pair_name": "${input_parameters.existing_keypair_name}",
                   "availability_zone": "${input_parameters.availability_zone}",
                   "vpc_id": "vpc-6c51be09",
@@ -167,9 +167,9 @@
                 "cloud_connection_name": "cmh-aws-2",
                 "template_data_objects": {},
                 "template_params": {
-                  "citi-rhel-vm_ami": "ami-011b3ccf1bd6db744",
-                  "citi-rhel-vm_aws_instance_type": "t2.small",
-                  "citi-rhel-vm_name": "citi-rhel-vm-${svc_instance.name}",
+                  "demo-rhel-vm_ami": "ami-011b3ccf1bd6db744",
+                  "demo-rhel-vm_aws_instance_type": "t2.small",
+                  "demo-rhel-vm_name": "demo-rhel-vm-${svc_instance.name}",
                   "aws_key_pair_name": "${input_parameters.existing_keypair_name}",
                   "availability_zone": "${input_parameters.availability_zone}",
                   "vpc_id": "vpc-6c51be09",
@@ -184,11 +184,11 @@
               }
             },
             {
-              "citi-create-vpc-stack": {
-                "title": "citi-create-vpc-stack",
-                "template_name": "citi-create-vpc-stack",
+              "demo-create-vpc-stack": {
+                "title": "demo-create-vpc-stack",
+                "template_name": "demo-create-vpc-stack",
                 "version": "master",
-                "id": "citicread5c9f509",
+                "id": "democread5c9f509",
                 "template_type": "Terraform",
                 "template_content_type": "Amazon EC2",
                 "template_provider": "Amazon EC2",
@@ -196,7 +196,7 @@
                 "cloud_connection_name": "cmh-aws-2",
                 "template_data_objects": {},
                 "template_params": {
-                  "network_name_prefix": "citi-vpc-${svc_instance.name}"
+                  "network_name_prefix": "demo-vpc-${svc_instance.name}"
                 },
                 "outputs": [
                   "vpc_id",
@@ -218,13 +218,13 @@
                 "cloud_connection_name": "cmh-aws-2",
                 "template_data_objects": {},
                 "template_params": {
-                  "citi-rhel-vm_ami": "ami-011b3ccf1bd6db744",
-                  "citi-rhel-vm_aws_instance_type": "t2.small",
-                  "citi-rhel-vm_name": "citi-rhel-vm-${svc_instance.name}",
+                  "demo-rhel-vm_ami": "ami-011b3ccf1bd6db744",
+                  "demo-rhel-vm_aws_instance_type": "t2.small",
+                  "demo-rhel-vm_name": "demo-rhel-vm-${svc_instance.name}",
                   "aws_key_pair_name": "${input_parameters.existing_keypair_name}",
                   "availability_zone": "${input_parameters.availability_zone}",
-                  "vpc_id": "${templates.citicread5c9f509.output.vpc_id}",
-                  "security_group_name": "${templates.citicread5c9f509.output.app_security_group_name}",
+                  "vpc_id": "${templates.democread5c9f509.output.vpc_id}",
+                  "security_group_name": "${templates.democread5c9f509.output.app_security_group_name}",
                   "volume_size": "8",
                   "volume_count": "4"
                 },

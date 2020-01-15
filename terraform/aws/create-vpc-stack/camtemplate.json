@@ -1,6 +1,6 @@
 {
-   "name": "citi-create-vpc-stack",
-   "description": "Citi - Create VPC stack",
+   "name": "create-vpc-stack",
+   "description": "Create VPC stack",
    "type": "userCreated",
    "manifest": {
      "template_type": "Terraform",
@@ -8,7 +8,7 @@
      "template_provider": "Amazon EC2"
    },
    "metadata": {
-     "displayName": "citi-create-vpc-stack",
+     "displayName": "create-vpc-stack",
      "bullets": []
    }
  }
